@@ -1,15 +1,17 @@
 # Nhentai Downloader
 
+Nentai Downloader for Windows/Linux.
+
 Nhentai下载器，用于批量下载指定漫画。
 
 原项目由Python编写，考虑到并发性能与可移植性使用Golang进行重构。
 
 
-- [X] 代理模式
-- [X] 多线程下载
-- [X] 选择语言
-- [X] 下载失败重试
-- [ ] 根据时间/tags 筛选
+- [X] 代理模式  Proxy
+- [X] 并发下载  Goroutine
+- [X] 选择语言  Language
+- [X] 下载失败重试  Retry
+- [ ] 根据tags 筛选  Filter by Tags
 
 
 
