@@ -1,4 +1,7 @@
-# Nhentai Downloader
+# NhenDownloader
+
+![Lines of code](https://img.shields.io/tokei/lines/github/tianyagk/NhenDownloader)  
+
 
 Nentai Downloader for Windows/Linux.
 
