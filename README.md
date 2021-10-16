@@ -1,6 +1,6 @@
 # NhenDownloader
 
-![Lines of code](https://img.shields.io/tokei/lines/github/tianyagk/NhenDownloader)  
+![Go Report Card](https://goreportcard.com/badge/github.com/tianyagk/NhenDownloader)![Lines of code](https://img.shields.io/tokei/lines/github/tianyagk/NhenDownloader)    
 
 
 Nentai Downloader for Windows/Linux.
