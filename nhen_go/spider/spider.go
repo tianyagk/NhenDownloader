@@ -1,4 +1,4 @@
-package nhen
+package spider
 
 import (
 	"fmt"
@@ -13,7 +13,7 @@ import (
 	"github.com/anaskhan96/soup"
 )
 
-func init_client(conf map[string]string) *http.Client {
+func initClient(conf map[string]string) *http.Client {
 	//adding the proxy settings to the Transport object
 	proxyStr := conf["proxies"]
 	transport := &http.Transport{}
@@ -95,50 +95,48 @@ func trySaveImage(tryNum int, url string, rootpath string, id int, client *http.
 	fmt.Println("Connection timed out, exceeding the maximum number of attempts " + fmt.Sprintf("%d", tryNum))
 }
 
-func Recent(config *map[string]string) {
-	conf := *config
-	client := init_client(conf)
+func Recent(conf map[string]string) {
+	client := initClient(conf)
 
-	url := "https://nhentai.net/language/" + conf["language"]
+	recentUrl := "https://nhentai.net/language/" + conf["language"]
 
-	doc := getParseHTML(url, client)
+	doc := getParseHTML(recentUrl, client)
 	captions := doc.Find("div", "id", "content").FindAll("div", "class", "caption")
 	for ids, caption := range captions {
 		fmt.Println(ids, "|", caption.Text(), "|")
 	}
 }
 
-func DownloadByID(config *map[string]string, id string) {
-	conf := *config
-	client := init_client(conf)
+func DownloadByID(conf map[string]string, id string) {
+	client := initClient(conf)
 
-	url := "https://nhentai.net/g/" + id
-	doc := getParseHTML(url, client)
+	downloadUrl := "https://nhentai.net/g/" + id
+	doc := getParseHTML(downloadUrl, client)
 
-	cover_url := doc.Find("div", "id", "cover").Find("noscript").Text()
-	galleries := strings.Split(cover_url, "/")[4]
+	coverUrl := doc.Find("div", "id", "cover").Find("noscript").Text()
+	galleries := strings.Split(coverUrl, "/")[4]
 	// fmt.Println(galleries)
 
-	name_before := doc.Find("h1", "class", "title").Find("span", "class", "before").Text()
-	name_pretty := doc.Find("h1", "class", "title").Find("span", "class", "pretty").Text()
-	name_after := doc.Find("h1", "class", "title").Find("span", "class", "after").Text()
+	nameBefore := doc.Find("h1", "class", "title").Find("span", "class", "before").Text()
+	namePretty := doc.Find("h1", "class", "title").Find("span", "class", "pretty").Text()
+	nameAfter := doc.Find("h1", "class", "title").Find("span", "class", "after").Text()
 
-	manga_name := name_before + name_pretty + name_after
+	mangaName := nameBefore + namePretty + nameAfter
 
 	page := doc.Find("section", "id", "tags").FindAll("div")[7].Find("a", "class", "tag").Find("span", "class", "name").Text()
 	pageNum, _ := strconv.Atoi(page)
 
 	// make dir for download
-	err := os.Mkdir("./galleries/"+strings.ReplaceAll(manga_name, " ", "_"), os.ModePerm)
+	err := os.Mkdir("./galleries/"+strings.ReplaceAll(mangaName, " ", "_"), os.ModePerm)
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println("- ", strings.ReplaceAll(manga_name, " ", "_"), " in download queue.")
+	fmt.Println("- ", strings.ReplaceAll(mangaName, " ", "_"), " in download queue.")
 
 	for idx := 1; idx <= pageNum; idx++ {
-		img_url := "https://i.nhentai.net/galleries/" + galleries + "/" + fmt.Sprintf("%d", idx) + ".jpg"
+		imgUrl := "https://i.nhentai.net/galleries/" + galleries + "/" + fmt.Sprintf("%d", idx) + ".jpg"
 
 		// overwrite
-		go trySaveImage(5, img_url, "./galleries/"+strings.ReplaceAll(manga_name, " ", "_")+"/", idx, client)
+		go trySaveImage(5, imgUrl, "./galleries/"+strings.ReplaceAll(mangaName, " ", "_")+"/", idx, client)
 	}
 }
