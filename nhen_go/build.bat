@@ -1,1 +1,1 @@
-go build -o NhenDownload.exe nhen.go
+go build
