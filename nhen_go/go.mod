@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/anaskhan96/soup v1.2.4
-	github.com/tianyagk/CliToolkit v0.0.0-20211016135148-fd1d2b9dd11d
+	github.com/tianyagk/CliToolkit v0.0.0-20211016165559-b568248ec0eb
 )
 
 require (

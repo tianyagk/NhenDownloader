@@ -4,6 +4,7 @@ import (
 	"NhenDownloader/spider"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/tianyagk/CliToolkit"
 )
@@ -24,6 +25,7 @@ func main() {
 	config["proxies"] = "http://localhost:7890"
 	config["language"] = "chinese"
 	config["maxTryTimes"] = "5"
+	config["maxOccurs"] = "30"
 
 	err := os.Mkdir("./galleries/", os.ModePerm)
 	if err != nil {
@@ -43,7 +45,8 @@ func main() {
 
 // Define your command func here
 func setProxy(str string, _ CliToolkit.Command) error {
-	config["proxies"] = str
+	// https://ip.ihuan.me  小幻HTTP在线代理
+	config["proxies"] = strings.TrimSuffix(str, "\r")
 	return nil
 }
 
@@ -53,11 +56,14 @@ func setLang(str string, _ CliToolkit.Command) error {
 }
 
 func doRecent(_ string, _ CliToolkit.Command) error {
-	spider.Recent(config)
-	return nil
+	err := spider.Recent(config)
+	return err
 }
 
 func doDownloadByID(id string, _ CliToolkit.Command) error {
-	spider.DownloadByID(config, id)
+	err := spider.DownloadByID(config, id)
+	if err != nil {
+		return err
+	}
 	return nil
 }

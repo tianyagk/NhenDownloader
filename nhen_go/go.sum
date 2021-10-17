@@ -7,8 +7,8 @@ github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZN
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.6.1 h1:hDPOHmpOpP40lSULcqw7IrRb/u7w6RpDC9399XyoNd0=
 github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
-github.com/tianyagk/CliToolkit v0.0.0-20211016135148-fd1d2b9dd11d h1:lWszKK3SkBNPPKhRELqusx9LJ/km4s+uTsh207T3+4Y=
-github.com/tianyagk/CliToolkit v0.0.0-20211016135148-fd1d2b9dd11d/go.mod h1:gtZ53gyD1O04xlwV/bFbXWJq2IBX4rkBhtBA6s0bEjE=
+github.com/tianyagk/CliToolkit v0.0.0-20211016165559-b568248ec0eb h1:+UJY3ZIMXLBd5PdabuZQ4U9+Ais6fEhQZSPvGU7xt04=
+github.com/tianyagk/CliToolkit v0.0.0-20211016165559-b568248ec0eb/go.mod h1:gtZ53gyD1O04xlwV/bFbXWJq2IBX4rkBhtBA6s0bEjE=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/net v0.0.0-20200114155413-6afb5195e5aa h1:F+8P+gmewFQYRk6JoLQLwjBCTu3mcIURZfNkVweuRKA=
 golang.org/x/net v0.0.0-20200114155413-6afb5195e5aa/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
