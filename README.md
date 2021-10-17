@@ -24,13 +24,12 @@ Nhentai下载器，用于批量下载指定漫画。
 NhentaiDownloader.exe
 Launch Nhentai-Downloader, entry 'help' for more information.
 >> help
-help                    | Query help
-exit                    | Exit NhenDownloader
-lang    -language       | Chose from ['chinese', 'japanese', 'english',etc.]
-proxy   -host:port      | Like 'http://localhost:7890'
-maxTryTimes     -tryNum | Default max try num: 5
-recent                  | Show recent popular manga with id
-download        -id     | 376478 -> 'https://nhentai.net/g/376478/'
+exit    	 |Flag: -e       | Exit Cli Toolkit
+recent   	 |Flag: -r       | Show recent popular manga
+download -id |Flag: -d       | Download manga by id, 376478 -> 'https://nhentai.net/g/376478/'
+proxy 	     |Flag: -p       | Setting proxy address like 'http://localhost:7890'
+lang     	 |Flag: -l       | Setting default language from ['chinese', 'japanese', 'english',etc.]
+help     	 |Flag: -h       | Cli command help
 ```
 
 **使用lang指令设置默认语言**
